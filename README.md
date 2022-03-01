@@ -1,5 +1,5 @@
 # Tema1
-# Web services used:
-# https://openweathermap.org/api
-# https://www.random.org/clients/http/api/
-# https://airlabs.co/docs/nearby
+Web services used: <br>
+https://openweathermap.org/api <br>
+https://www.random.org/clients/http/api/<br>
+https://airlabs.co/docs/nearby
