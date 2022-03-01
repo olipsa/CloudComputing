@@ -1,7 +1,9 @@
 import configparser
+import http.server
 import json
 import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from socketserver import ThreadingMixIn
 from urllib.parse import urlparse, urlencode
 import cgi
 
@@ -18,21 +20,29 @@ class handler(BaseHTTPRequestHandler):
         query = urlparse(self.path).query
         try:
             query_components = dict(qc.split("=") for qc in query.split("&"))
-            print(query_components)
-            self.send_response(200)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
+
             city = query_components['departure']
             min = int(query_components['min'])
             max = int(query_components['max'])
             try:
                 departure, destination = get_result(city, min, max)
+                self.send_response(200)
+                self.send_header("Content-type", "text/html")
+                self.end_headers()
                 self.wfile.write(bytes(
                     f"<div>Get to <b>{departure['name']}</b>({departure['iata_code']}). Distance: {departure['distance']}</div>"
                     f"<div>Arrive at <b>{destination['name']}</b>({destination['iata_code']}). Distance: {destination['distance']}"
                     f"</div>", 'utf-8'))
             except WebServiceException as e:
-                self.wfile.write(bytes(f"<div>{e}</div", 'utf-8'))
+                self.send_response(500)
+                self.send_header("Content-type", "text/html")
+                self.end_headers()
+                self.wfile.write(bytes(f"<div>{e}</div>", 'utf-8'))
+            except InputException as e:
+                self.send_response(400)
+                self.send_header("Content-type", "text/html")
+                self.end_headers()
+                self.wfile.write(bytes(f"<div>{e}</div>", 'utf-8'))
 
         except ValueError:
             print("No query parameters.")
@@ -70,7 +80,14 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
 
 
+class ThreadedHTTPServer(ThreadingMixIn, http.server.HTTPServer):
+    pass
+
+
 class WebServiceException(Exception):
+    pass
+
+class InputException(Exception):
     pass
 
 
@@ -85,12 +102,14 @@ def get_result(city, min, max):
     delay = time.time() - c
     logging("OpenWeather API response time: " + str(delay))
     try:
+        print(response.status_code)
         response.raise_for_status()
+        latitude = response.json()[0]['lat']
+        longitude = response.json()[0]['lon']
     except requests.exceptions.HTTPError as err:
-        print("api.openweathermap")
         raise WebServiceException(err)
-    latitude = response.json()[0]['lat']
-    longitude = response.json()[0]['lon']
+    except IndexError as err:
+        raise InputException(err)
 
     # Get a random distance in a provided interval
     min_distance = min
@@ -103,7 +122,6 @@ def get_result(city, min, max):
     try:
         response.raise_for_status()
     except requests.exceptions.HTTPError as err:
-        print("random.org")
         raise WebServiceException(err)
     random_distance = response.text
 
@@ -115,16 +133,12 @@ def get_result(city, min, max):
     delay = time.time() - c
     logging("AirLabs API response time: " + str(delay))
     if "error" in json.loads(response.text):
-        print("AirLabs")
         raise WebServiceException("AirLabs error: "+response.json()["error"]["message"])
-    print(116)
     try:
         response.raise_for_status()
     except requests.exceptions.HTTPError as err:
         raise WebServiceException(err)
-    print(121)
     airports = response.json()["response"]['airports']
-    print(123)
     destination = None
     departure = None
     for airport in airports:
@@ -133,7 +147,6 @@ def get_result(city, min, max):
                 departure = airport
                 continue
             destination = airport
-    print(132)
     print(departure, destination)
     return departure, destination
 
@@ -147,7 +160,7 @@ def logging(text):
 
 def main():
     PORT = 8088
-    server = HTTPServer(("", PORT), handler)
+    server = ThreadedHTTPServer(("", PORT), handler)
     print("Server started at port 8088.")
     server.serve_forever()
     server.server_close()
