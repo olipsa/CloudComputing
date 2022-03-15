@@ -1337,94 +1337,113 @@
     <table id="493" parent="170" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="494" parent="170" name="sqlite_sequence">
-      <System>1</System>
-    </table>
-    <column id="495" parent="491" name="ID">
-      <DataType>INTEGER|0s</DataType>
-      <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="496" parent="491" name="name">
+    <column id="494" parent="491" name="name">
       <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="495" parent="491" name="genre">
+      <DataType>TEXT|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="497" parent="491" name="genre">
+    <column id="496" parent="491" name="language">
       <DataType>TEXT|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="498" parent="491" name="language">
+    <column id="497" parent="491" name="country">
       <DataType>TEXT|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="499" parent="491" name="country">
-      <DataType>TEXT|0s</DataType>
+    <column id="498" parent="491" name="ID">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <key id="500" parent="491">
+    <index id="499" parent="491" name="sqlite_autoindex_authors_1">
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <index id="500" parent="491" name="authors_ID_uindex">
       <ColNames>ID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="501" parent="491">
+      <ColNames>name</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_authors_1</UnderlyingIndexName>
     </key>
-    <column id="501" parent="492" name="ID">
-      <DataType>INTEGER|0s</DataType>
-      <Position>1</Position>
-    </column>
     <column id="502" parent="492" name="title">
       <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
-      <Position>2</Position>
+      <Position>1</Position>
     </column>
     <column id="503" parent="492" name="author">
       <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
-      <Position>3</Position>
+      <Position>2</Position>
     </column>
     <column id="504" parent="492" name="ISBN">
       <DataType>INTEGER|0s</DataType>
-      <Position>4</Position>
+      <Position>3</Position>
     </column>
     <column id="505" parent="492" name="year">
       <DataType>INTEGER|0s</DataType>
-      <Position>5</Position>
+      <Position>4</Position>
     </column>
     <column id="506" parent="492" name="genre">
       <DataType>TEXT|0s</DataType>
-      <Position>6</Position>
+      <Position>5</Position>
     </column>
     <column id="507" parent="492" name="rating">
       <DataType>REAL|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="508" parent="492" name="ID">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <key id="508" parent="492">
+    <index id="509" parent="492" name="sqlite_autoindex_books_1">
+      <ColNames>title
+author</ColNames>
+      <ColumnCollations>
+</ColumnCollations>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <index id="510" parent="492" name="books_ID_uindex">
       <ColNames>ID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="511" parent="492">
+      <ColNames>title
+author</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_books_1</UnderlyingIndexName>
     </key>
-    <column id="509" parent="493" name="type">
+    <column id="512" parent="493" name="type">
       <DataType>text|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="510" parent="493" name="name">
+    <column id="513" parent="493" name="name">
       <DataType>text|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="511" parent="493" name="tbl_name">
+    <column id="514" parent="493" name="tbl_name">
       <DataType>text|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="512" parent="493" name="rootpage">
+    <column id="515" parent="493" name="rootpage">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="513" parent="493" name="sql">
+    <column id="516" parent="493" name="sql">
       <DataType>text|0s</DataType>
       <Position>5</Position>
-    </column>
-    <column id="514" parent="494" name="name">
-      <Position>1</Position>
-    </column>
-    <column id="515" parent="494" name="seq">
-      <Position>2</Position>
     </column>
   </database-model>
 </dataSource>

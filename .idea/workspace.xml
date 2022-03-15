@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7b48ebe-b272-44f1-bfff-6c9a08031b27" name="Changes" comment="Updated repo structure.">
-      <change afterPath="$PROJECT_DIR$/Tema2/database.py" afterDir="false" />
+    <list default="true" id="e7b48ebe-b272-44f1-bfff-6c9a08031b27" name="Changes" comment="GET + DELETE methods">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0334fc42-57a8-4e2c-8c6c-c0a39da92175.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0334fc42-57a8-4e2c-8c6c-c0a39da92175.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tema2/library.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/library.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tema2/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/methods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema2/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +85,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1647290737458</updated>
-      <workItem from="1647290739453" duration="11049000" />
+      <workItem from="1647290739453" duration="11182000" />
+      <workItem from="1647337363782" duration="16274000" />
     </task>
     <task id="LOCAL-00001" summary="Updated repo structure.">
       <created>1647290920147</created>
@@ -100,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647291032125</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="GET + DELETE methods">
+      <created>1647301903451</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1647301903451</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,9 +128,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated repo structure." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated repo structure." />
+    <MESSAGE value="GET + DELETE methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="GET + DELETE methods" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CloudComputing$server.coverage" NAME="server Coverage Results" MODIFIED="1647301333701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tema2" />
+    <SUITE FILE_PATH="coverage/CloudComputing$server.coverage" NAME="server Coverage Results" MODIFIED="1647354901165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tema2" />
   </component>
 </project>
