@@ -78,6 +78,10 @@ def update(table_name, id, data):
         # table not found
         return 0
 
+    result = [dict(row) for row in cursor.fetchall()]
+    if not result:  # id not found
+        return 0
+
     sql = f"UPDATE {table_name} SET "
     for column in data:
         try:
